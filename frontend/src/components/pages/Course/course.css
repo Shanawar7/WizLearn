@@ -1,0 +1,814 @@
+/* Course Page Container */
+.course-page {
+    min-height: 100vh;
+    background-color: #F5F7FA;
+}
+
+/* Course Navbar */
+.course-navbar {
+    background: linear-gradient(135deg, #1D2A50 0%, #2a3f6e 100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.course-nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.nav-back-btn:hover {
+    background: rgba(240, 212, 89, 0.2);
+    color: #F0D459;
+}
+
+.course-nav-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+}
+
+.course-icon {
+    font-size: 1.5rem;
+    color: #F0D459;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.course-nav-title h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.course-nav-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.nav-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.quiz-btn {
+    background: #F0D459;
+    color: #1D2A50;
+}
+
+.quiz-btn:hover {
+    background: #e8c850;
+    transform: translateY(-2px);
+}
+
+.roadmap-btn {
+    background: #4facfe;
+    color: white;
+}
+
+.roadmap-btn:hover {
+    background: #3c9ce8;
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background: rgba(244, 67, 54, 0.2);
+    color: white;
+    padding: 0.5rem 0.75rem;
+}
+
+.logout-btn:hover {
+    background: rgba(244, 67, 54, 0.4);
+}
+
+/* Course Header */
+.course-header {
+    padding: 3rem 2rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.course-header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.course-page-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.course-page-description {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.course-page-id {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.id-label {
+    font-weight: 600;
+}
+
+.id-value {
+    font-family: monospace;
+    font-weight: 700;
+}
+
+/* Course Content */
+.course-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.materials-section {
+    margin-bottom: 5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+    font-size: 1.75rem;
+    color: #1D2A50;
+    font-weight: bold;
+}
+
+.section-header p {
+    color: #718096;
+    font-size: 1rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    color: #1D2A50;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: #718096;
+    font-size: 1rem;
+}
+
+/* Materials Grid */
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Material Card */
+.material-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-top: 4px solid #1D2A50;
+    display: flex;
+    flex-direction: column;
+}
+
+.completed-material {
+    border-top-color: #38a169 !important;
+    background-color: #f0fff4 !important;
+    opacity: 0.85;
+}
+
+.completed-material:hover {
+    opacity: 1;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.material-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.material-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.material-icon {
+    font-size: 2rem;
+    color: #F0D459;
+    flex-shrink: 0;
+}
+
+.material-info {
+    flex: 1;
+}
+
+.material-title {
+    font-size: 1.25rem;
+    color: #1D2A50;
+    margin: 0 0 0.25rem 0;
+    font-weight: 600;
+}
+
+.material-date {
+    color: #A0AEC0;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.material-delete-btn {
+    background: transparent;
+    border: none;
+    color: #FC8181;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.material-delete-btn:hover {
+    background: #FFF5F5;
+    transform: scale(1.1);
+}
+
+.material-body {
+    padding: 1.5rem;
+}
+
+.material-description {
+    color: #4A5568;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.material-image {
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.material-file {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: rgba(240, 212, 89, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1D2A50;
+}
+
+.file-icon {
+    color: #F0D459;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.file-name {
+    font-family: monospace;
+    font-size: 0.9rem;
+    font-weight: 500;
+    flex: 1;
+    word-break: break-all;
+}
+
+.file-size {
+    color: #718096;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.file-action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-file-btn {
+    background: #4299e1;
+    color: white;
+}
+
+.view-file-btn:hover {
+    background: #3182ce;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(66, 153, 225, 0.3);
+}
+
+.download-file-btn {
+    background: #48BB78;
+    color: white;
+}
+
+.download-file-btn:hover {
+    background: #38A169;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(72, 187, 120, 0.3);
+}
+
+/* Upload Material Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.upload-material-modal {
+    background: white;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+    overflow: hidden;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #1D2A50 0%, #2a3f6e 100%);
+    color: white;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.modal-form {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1D2A50;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #E2E8F0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #F0D459;
+    box-shadow: 0 0 0 3px rgba(240, 212, 89, 0.1);
+}
+
+.form-input.input-error,
+.form-textarea.input-error {
+    border-color: #FC8181;
+}
+
+.error-message {
+    display: block;
+    color: #FC8181;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border: 2px dashed #E2E8F0;
+    border-radius: 0.75rem;
+    background: #F7FAFC;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4A5568;
+    font-weight: 500;
+}
+
+.file-upload-label:hover {
+    border-color: #F0D459;
+    background: rgba(240, 212, 89, 0.1);
+}
+
+.file-upload-label svg {
+    font-size: 1.5rem;
+    color: #F0D459;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-cancel,
+.btn-done {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background: #E2E8F0;
+    color: #4A5568;
+}
+
+.btn-cancel:hover {
+    background: #CBD5E0;
+}
+
+.btn-done {
+    background: linear-gradient(135deg, #F0D459 0%, #e8c850 100%);
+    color: #1D2A50;
+}
+
+.btn-done:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(240, 212, 89, 0.4);
+}
+
+/* Floating Add Button */
+.floating-add-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #F0D459 0%, #e8c850 100%);
+    color: #1D2A50;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(240, 212, 89, 0.4);
+    transition: all 0.3s ease;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-add-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 8px 25px rgba(240, 212, 89, 0.5);
+}
+
+/* AI & Resources Features */
+.res-tab-btn {
+    padding: 10px 25px;
+    border: none;
+    background: #f8f9fa;
+    border-radius: 30px;
+    color: var(--navy);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.res-tab-btn.active {
+    background: var(--navy);
+    color: white;
+}
+
+.res-card {
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.res-card:hover {
+    transform: translateY(-5px);
+}
+
+.res-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.res-book-card {
+    border-radius: 12px;
+    background: white;
+}
+
+.roadmap-card {
+    border-radius: 15px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.roadmap-card:hover {
+    border-top-color: var(--navy) !important;
+    transform: scale(1.02);
+}
+
+.quiz-opt-btn {
+    border-radius: 10px;
+    border: 2px solid #eee;
+    font-weight: 500;
+}
+
+.quiz-opt-btn:hover {
+    background: var(--navy);
+    color: white !important;
+}
+
+.opt-label {
+    background: rgba(23, 41, 79, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.btn-navy {
+    background: var(--navy);
+    color: white;
+}
+
+.btn-navy:hover {
+    background: #0d1a33;
+    color: white;
+}
+
+.btn-outline-navy {
+    border: 2px solid var(--navy);
+    color: var(--navy);
+}
+
+.btn-outline-navy:hover {
+    background: var(--navy);
+    color: white;
+}
+
+/* AI Overlay & Spinner */
+.ai-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(23, 41, 79, 0.85);
+    /* Navy background */
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.ai-spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-top: 5px solid var(--yellow);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.material-quiz-btn {
+    background: #fdf2f2;
+    color: #cc3300;
+    /* Reddish for brain icon */
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.material-quiz-btn:hover {
+    background: #cc3300;
+    color: white;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: #1D2A50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .course-nav-title h2 {
+        font-size: 1rem;
+    }
+
+    .nav-action-btn span {
+        display: none;
+    }
+
+    .course-page-title {
+        font-size: 2rem;
+    }
+
+    .materials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-content {
+        padding: 1rem;
+    }
+
+    .floating-add-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .course-nav-container {
+        padding: 0 1rem;
+    }
+
+    .course-page-title {
+        font-size: 1.5rem;
+    }
+
+    .nav-back-btn span {
+        display: none;
+    }
+}
