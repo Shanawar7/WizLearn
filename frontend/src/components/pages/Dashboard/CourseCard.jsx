@@ -9,6 +9,7 @@ const CourseCard = ({ course, onDelete, onEdit }) => {
     const navigate = useNavigate();
 
     const { from, to } = getCourseColorByIndex((courseCode || '').length);
+    const isYellowTheme = from === '#F0D459';
 
     const handleCopyCourseId = (e) => {
         e.stopPropagation(); // Prevent card click
@@ -40,7 +41,7 @@ const CourseCard = ({ course, onDelete, onEdit }) => {
                     background: `linear-gradient(135deg, ${from} 0%, ${to} 100%)`
                 }}
             >
-                <h3 className="course-title">{title}</h3>
+                <h3 className="course-title" style={isYellowTheme ? { color: '#1D2A50', textShadow: 'none' } : {}}>{title}</h3>
                 {!isRecommendation && (
                     <button className="course-menu-btn" onClick={(e) => e.stopPropagation()}>
                         <FaEllipsisV />

@@ -46,7 +46,7 @@ const Hero = () => {
                                         textAlign: 'center'
                                     }}>
                                         <MdQuiz style={{ color: '#F0D459', fontSize: '2.5rem', marginBottom: '0.5rem' }} />
-                                        <p style={{ color: 'white', fontWeight: '600', margin: 0 }}>AI Quizzes</p>
+                                        <p style={{ color: '#1D2A50', fontWeight: '800', margin: 0 }}>AI Quizzes</p>
                                     </div>
                                 </div>
                                 <div className="col-6">
@@ -57,7 +57,7 @@ const Hero = () => {
                                         textAlign: 'center'
                                     }}>
                                         <FaRoad style={{ color: '#F0D459', fontSize: '2.5rem', marginBottom: '0.5rem' }} />
-                                        <p style={{ color: 'white', fontWeight: '600', margin: 0 }}>Smart Roadmaps</p>
+                                        <p style={{ color: '#1D2A50', fontWeight: '800', margin: 0 }}>Smart Roadmaps</p>
                                     </div>
                                 </div>
                             </div>

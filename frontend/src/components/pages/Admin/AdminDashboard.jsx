@@ -218,14 +218,16 @@ export default function AdminDashboard() {
                 <div className="text-center my-4">Loading...</div>
             ) : (
                 <div className="row mt-3">
-                    {recentCourses.length > 0 ? recentCourses.map((course) => (
+                    {recentCourses.length > 0 ? recentCourses.map((course, idx) => (
                         <div className="col-md-4 mb-3" key={course.id}>
                             <div className="card p-3 shadow-sm h-100" style={{ borderRadius: "12px" }}>
-                                <div className="d-flex align-items-center mb-3">
-                                    <FaBook size={45} className="me-3 text-secondary" />
+                                <div className="d-flex align-items-center">
+                                    <div className={`course-icon-sm ${idx % 2 === 0 ? 'bg-primary text-white' : 'bg-warning text-dark'} me-3`}>
+                                        <FaBook />
+                                    </div>
                                     <div>
                                         <h5 className="mb-0">{course.title}</h5>
-                                        <small className="text-muted">Code: {course.code}</small>
+                                        <small className="text-muted">{course.code}</small>
                                     </div>
                                 </div>
 

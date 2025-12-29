@@ -284,6 +284,8 @@ const CoursePage = () => {
     }
 
     const headerColor = (course && course.color) ? course.color : { from: '#1D2A50', to: '#2a3f6e' };
+    const isYellowHeader = headerColor.from === '#F0D459';
+    const headerTextColor = isYellowHeader ? '#1D2A50' : 'white';
 
     return (
         <div className="course-page">
@@ -304,14 +306,14 @@ const CoursePage = () => {
             >
                 <div className="course-header-content">
                     <div className="d-flex justify-content-between align-items-start w-100">
-                        <div>
-                            <h1 className="course-page-title">{course.title}</h1>
-                            <div className="course-page-id">
+                        <div style={{ color: headerTextColor }}>
+                            <h1 className="course-page-title" style={{ color: 'inherit', textShadow: isYellowHeader ? 'none' : '0 2px 4px rgba(0,0,0,0.2)' }}>{course.title}</h1>
+                            <div className="course-page-id" style={{ background: isYellowHeader ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.2)' }}>
                                 <span className="id-label">Course ID:</span>
                                 <span className="id-value">{course.courseCode}</span>
                             </div>
                             {enrollment && (
-                                <div className="course-page-id ms-2">
+                                <div className="course-page-id ms-2" style={{ background: isYellowHeader ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.2)' }}>
                                     <span className="id-label">Time Spent:</span>
                                     <span className="id-value">
                                         {Math.floor((enrollment.timeSpent || 0) / 3600)}h {Math.floor(((enrollment.timeSpent || 0) % 3600) / 60)}m
@@ -320,14 +322,14 @@ const CoursePage = () => {
                             )}
                         </div>
                         {enrollment && enrollment.status === 'APPROVED' && (
-                            <div className="course-progress-container text-end" style={{ minWidth: '200px' }}>
-                                <div className="d-flex justify-content-between mb-1 text-white small">
+                            <div className="course-progress-container text-end" style={{ minWidth: '200px', color: headerTextColor }}>
+                                <div className="d-flex justify-content-between mb-1 small" style={{ color: 'inherit' }}>
                                     <span>Learning Progress</span>
                                     <span>{enrollment.progress || 0}%</span>
                                 </div>
-                                <div className="progress" style={{ height: '8px', background: 'rgba(255,255,255,0.2)' }}>
+                                <div className="progress" style={{ height: '8px', background: isYellowHeader ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.2)' }}>
                                     <div
-                                        className="progress-bar bg-warning"
+                                        className={`progress-bar ${isYellowHeader ? 'bg-primary' : 'bg-warning'}`}
                                         role="progressbar"
                                         style={{ width: `${enrollment.progress || 0}%`, transition: 'width 1s ease' }}
                                     ></div>

@@ -427,14 +427,15 @@
     }
 }
 
-.upload-material-modal {
-    background: white;
-    border-radius: 1rem;
-    width: 90%;
-    max-width: 600px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.3s ease;
+.upload-material-modal,
+.add-course-modal,
+.modal-content {
+    background: white !important;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 1.5rem;
     overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes slideUp {
@@ -462,6 +463,7 @@
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
+    color: white !important;
 }
 
 .close-btn {
