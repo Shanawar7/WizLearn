@@ -3,9 +3,9 @@ import axios from 'axios';
 
 const AuthContext = createContext(null);
 
-// Move api creation outside component to ensure stable instance
+// Use environment variable for API URL, fallback to localhost for development
 export const api = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
 });
 
 export const AuthProvider = ({ children }) => {
