@@ -36,7 +36,7 @@ export class AuthService {
       }
     }
 
-    const payload = { email: user.email, sub: user.id };
+    const payload = { email: user.email, sub: user.id, role: user.role };
     return {
       access_token: this.jwtService.sign(payload),
       user,
@@ -45,7 +45,7 @@ export class AuthService {
 
   async signup(createUserDto: CreateUserDto) {
     const user = await this.usersService.create(createUserDto);
-    const payload = { email: user.email, sub: user.id };
+    const payload = { email: user.email, sub: user.id, role: user.role };
     return {
       access_token: this.jwtService.sign(payload),
       user, // Returns user object (password excluded by @Exclude usually, but need to check if plain object has it)
