@@ -25,15 +25,19 @@ import { NotesModule } from './notes/notes.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        url: configService.get('DATABASE_URL'),
-        autoLoadEntities: true,
-        synchronize: true, // Auto-sync entities (Dev only)
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      }),
+      useFactory: (configService: ConfigService) => {
+        console.log('JWT_SECRET loaded:', !!configService.get('JWT_SECRET'));
+        console.log('DATABASE_URL loaded:', !!configService.get('DATABASE_URL'));
+        return {
+          type: 'postgres',
+          url: configService.get('DATABASE_URL'),
+          autoLoadEntities: true,
+          synchronize: true, // Auto-sync entities (Dev only)
+          ssl: configService.get('DB_SSL') === 'false' ? false : {
+            rejectUnauthorized: false,
+          },
+        };
+      },
     }),
     AuthModule,
     UsersModule,

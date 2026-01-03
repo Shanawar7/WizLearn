@@ -7,23 +7,28 @@ services:
       POSTGRES_DB: wizlearn
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   backend:
-    build: ./backend
+    image: shanawar07/wizlearn-backend:latest
     environment:
       DATABASE_URL: postgresql://postgres:password@db:5432/wizlearn
       PORT: 3000
+      JWT_SECRET: "your-secret-key-here"
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      DB_SSL: 'false'
     ports:
       - "3000:3000"
     depends_on:
       - db
 
   frontend:
-    build: 
-      context: ./frontend
-      args:
-        - VITE_API_URL=http://localhost:3000
+    image: shanawar07/wizlearn-frontend:latest
     ports:
       - "80:80"
     depends_on:
       - backend
+
+volumes:
+  postgres_data:
