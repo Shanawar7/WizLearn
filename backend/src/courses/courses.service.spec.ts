@@ -9,13 +9,12 @@ describe('CoursesService', () => {
     let service: CoursesService;
 
     const mockCourseRepository = {
-        find: jest.fn().mockResolvedValue([{ id: 1, title: 'Test Course' }]),
+        find: jest.fn().mockResolvedValue([{ id: 1, title: 'Test Course', materials: [], enrollments: [] }]),
         findOne: jest.fn().mockImplementation((options) => {
-            if (options.where.id === 1) return Promise.resolve({ id: 1, title: 'Test Course' });
-            return null;
+            return Promise.resolve({ id: 1, title: 'Test Course', materials: [], enrollments: [] });
         }),
         create: jest.fn(),
-        save: jest.fn().mockImplementation((course) => Promise.resolve({ id: Date.now(), ...course })),
+        save: jest.fn().mockImplementation((course) => Promise.resolve({ id: 1, ...course, materials: [], enrollments: [] })),
         update: jest.fn(),
     };
 

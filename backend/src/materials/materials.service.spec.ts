@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { MaterialsService } from './materials.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Material } from './entities/material.entity';
+import { MaterialFile } from './entities/material-file.entity';
 import { Course } from '../courses/entities/course.entity';
 
 describe('MaterialsService', () => {
@@ -19,6 +20,7 @@ describe('MaterialsService', () => {
             providers: [
                 MaterialsService,
                 { provide: getRepositoryToken(Material), useValue: mockRepo },
+                { provide: getRepositoryToken(MaterialFile), useValue: mockRepo },
                 { provide: getRepositoryToken(Course), useValue: mockRepo },
             ],
         }).compile();

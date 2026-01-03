@@ -1,27 +1,27 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AdminService } from './admin.service';
-import { UsersService } from '../users/users.service';
-import { CoursesService } from '../courses/courses.service';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { User } from '../users/entities/user.entity';
+import { Course } from '../courses/entities/course.entity';
+import { Material } from '../materials/entities/material.entity';
 
 describe('AdminService', () => {
     let service: AdminService;
 
-    const mockUsersService = {
-        findAll: jest.fn().mockResolvedValue([]),
-        banUser: jest.fn(),
-    };
-
-    const mockCoursesService = {
-        findAll: jest.fn().mockResolvedValue([]),
+    const mockRepo = {
+        find: jest.fn().mockResolvedValue([]),
         delete: jest.fn(),
+        count: jest.fn().mockResolvedValue(0),
+        update: jest.fn(),
     };
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
             providers: [
                 AdminService,
-                { provide: UsersService, useValue: mockUsersService },
-                { provide: CoursesService, useValue: mockCoursesService },
+                { provide: getRepositoryToken(User), useValue: mockRepo },
+                { provide: getRepositoryToken(Course), useValue: mockRepo },
+                { provide: getRepositoryToken(Material), useValue: mockRepo },
             ],
         }).compile();
 

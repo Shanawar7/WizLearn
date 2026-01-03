@@ -11,7 +11,7 @@ describe('UsersService', () => {
     findOne: jest.fn().mockImplementation((query) => {
       // Mock finding a user
       if (query.where.email === 'test@example.com') {
-        return Promise.resolve({ id: 1, email: 'test@example.com', password: 'hashedPassword' });
+        return Promise.resolve({ id: 1, email: 'test@example.com', password: 'hashedPassword', friendId: 'WIZ-TEST' });
       }
       return null;
     }),
@@ -41,13 +41,13 @@ describe('UsersService', () => {
   });
 
   it('should find a user by email', async () => {
-    const user = await service.findOne('test@example.com');
+    const user = await service.findOneByEmail('test@example.com');
     expect(user).toBeDefined();
     expect(user.email).toBe('test@example.com');
   });
 
   it('should return null if user not found', async () => {
-    const user = await service.findOne('nonexistent@example.com');
+    const user = await service.findOneByEmail('nonexistent@example.com');
     expect(user).toBeNull();
   });
 });

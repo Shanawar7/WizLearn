@@ -2,12 +2,15 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
+
+jest.mock('bcrypt');
 
 describe('AuthService', () => {
     let service: AuthService;
 
     const mockUsersService = {
-        findOne: jest.fn(),
+        findOneByEmail: jest.fn(),
         create: jest.fn(),
     };
 
@@ -40,7 +43,11 @@ describe('AuthService', () => {
     });
 
     it('should return token on login', async () => {
-        const user = { email: 'test@test.com', id: 1 };
+        const user = { email: 'test@test.com', id: 1, password: 'password' };
+        mockUsersService.findOneByEmail.mockResolvedValue({ ...user, password: 'hashedPassword' });
+
+        (bcrypt.compare as jest.Mock).mockResolvedValue(true);
+
         const result = await service.login(user);
         expect(result).toHaveProperty('access_token');
         expect(result.access_token).toBe('mockToken');

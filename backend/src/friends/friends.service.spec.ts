@@ -3,6 +3,7 @@ import { FriendsService } from './friends.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Friendship } from './entities/friendship.entity';
 import { User } from '../users/entities/user.entity';
+import { Enrollment } from '../enrollments/entities/enrollment.entity';
 
 describe('FriendsService', () => {
     let service: FriendsService;
@@ -20,6 +21,7 @@ describe('FriendsService', () => {
                 FriendsService,
                 { provide: getRepositoryToken(Friendship), useValue: mockRepo },
                 { provide: getRepositoryToken(User), useValue: mockRepo },
+                { provide: getRepositoryToken(Enrollment), useValue: mockRepo },
             ],
         }).compile();
 

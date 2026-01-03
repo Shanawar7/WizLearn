@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NotesService } from './notes.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { SharedNote } from './entities/note.entity';
+import { Course } from '../courses/entities/course.entity';
 
 describe('NotesService', () => {
     let service: NotesService;
@@ -18,6 +19,7 @@ describe('NotesService', () => {
             providers: [
                 NotesService,
                 { provide: getRepositoryToken(SharedNote), useValue: mockRepo },
+                { provide: getRepositoryToken(Course), useValue: mockRepo },
             ],
         }).compile();
 
