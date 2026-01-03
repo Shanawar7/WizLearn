@@ -1,38 +1,87 @@
-| TC ID | Module | Test Scenario | Test Steps | Expected Result | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **TC-01** | Auth | User Signup | 1. Navigate to Signup Page<br>2. Enter Name, Email, Password<br>3. Click 'Sign Up' | User account is created and redirected to Dashboard. | **Pass** |
-| **TC-02** | Auth | User Login | 1. Navigate to Login Page<br>2. Enter valid Email & Password<br>3. Click 'Login' | User is authenticated and redirected to Dashboard. | **Pass** |
-| **TC-03** | Auth | Invalid Login | 1. Enter incorrect Email or Password<br>2. Click 'Login' | Error message "Invalid credentials" displayed. | **Pass** |
-| **TC-04** | Auth | Logout | 1. Click Profile Icon<br>2. Select 'Logout' | User session ends, redirected to Landing/Login page. | **Pass** |
-| **TC-05** | Profile | View Profile | 1. Navigate to /profile | User details (Name, Email, Role) are displayed correctly. | **Pass** |
-| **TC-06** | Profile | Edit Profile | 1. Click 'Edit Profile'<br>2. Update Name/Avatar<br>3. Save | Profile information is updated in database and UI. | **Pass** |
-| **TC-07** | Course | View All Courses | 1. Navigate to 'Courses' tab<br>2. Scroll through list | All available courses are displayed with titles and descriptions. | **Pass** |
-| **TC-08** | Course | Search Course | 1. Enter keyword in Search Bar<br>2. Press Enter | Only courses matching the keyword are displayed. | **Pass** |
-| **TC-09** | Course | Enroll in Course | 1. Select a Course<br>2. Click 'Enroll Now' | Course added to 'My Courses' section. Enrollment status active. | **Pass** |
-| **TC-10** | Course | View Material | 1. Open Enrolled Course<br>2. Click on a Material (PDF/Video) | Material loads in the viewer/player successfully. | **Pass** |
-| **TC-11** | AI | Generate Roadmap | 1. Open Course<br>2. Click 'Generate AI Roadmap'<br>3. Select context/Material | AI generates a structured 4-week study plan with daily tasks. | **Pass** |
-| **TC-12** | AI | Roadmap Interaction | 1. Click on a Roadmap task | Modal/Details expand showing study resources for that task. | **Pass** |
-| **TC-13** | AI | Generate Quiz | 1. Open Material<br>2. Click 'Take AI Quiz' | AI generates 10 relevant MCQs based on the material. | **Pass** |
-| **TC-14** | AI | Submit Quiz | 1. Select answers for 10 questions<br>2. Click 'Submit' | Score is calculated and displayed immediately. | **Pass** |
-| **TC-15** | Chat | Academic Chat | 1. Open Chatbox<br>2. Ask "Explain Quantum Computing" | AI answers with a detailed, academic explanation. | **Pass** |
-| **TC-16** | Chat | Off-Topic Guard | 1. Open Chatbox<br>2. Ask "Who won the World Cup?" | AI politely declines: "I can only answer academic questions." | **Pass** |
-| **TC-17** | Social | Search Friend | 1. Go to Friends > Find Friends<br>2. Search "John" | List of users named John appears. | **Pass** |
-| **TC-18** | Social | Send Request | 1. Click 'Add Friend' on a user | Button changes to 'Request Sent'. | **Pass** |
-| **TC-19** | Social | Accept Request | 1. Login as Receiver<br>2. Go to Requests<br>3. Click 'Accept' | User added to Friends List. Chat becomes available. | **Pass** |
-| **TC-20** | Social | Real-time Chat | 1. Open Chat with Friend<br>2. Send "Hello" | "Hello" appears instantly on Friend's screen (no refresh). | **Pass** |
-| **TC-21** | Community | View Notes | 1. Navigate to /community | Public notes from other students are visible. | **Pass** |
-| **TC-22** | Community | Create Note | 1. Click 'New Note'<br>2. Enter Title/Content<br>3. Toggle 'Public'<br>4. Save | Note appears in Community feed. | **Pass** |
-| **TC-23** | Community | Rate/Like Note | 1. Click 'Like' on a community note | Like counter increments by 1. | **Pass** |
-| **TC-24** | Admin | Admin Login | 1. Login with Admin credentials | Redirected to Admin Dashboard (not User Dashboard). | **Pass** |
-| **TC-25** | Admin | System Stats | 1. View Dashboard Home | Total Users, Courses, and Active Users counts are correct. | **Pass** |
-| **TC-26** | Admin | Create Course | 1. Courses > Create New<br>2. Fill details<br>3. Save | New course is visible in Student's Course Catalog. | **Pass** |
-| **TC-27** | Admin | Upload Material | 1. Select Course<br>2. Add Module > Upload File | File is uploaded and accessible to enrolled students. | **Pass** |
-| **TC-28** | Admin | Manage Users | 1. Admin > Users<br>2. Search user<br>3. Click 'Disable/Ban' | User cannot login anymore. | **Pass** |
-| **TC-29** | Admin | View Analytics | 1. Go to Analytics Tab | Graphs show user growth and course popularity. | **Pass** |
-| **TC-30** | System | Responsive UI | 1. Resize browser to Mobile width | UI adapts (Hamburger menu appears, grid stacks). | **Pass** |
-| **TC-31** | Security | Unauthorized Admin Access | 1. Login as Student<br>2. Manually navigate to '/admin' URL | Access Denied / Redirected to Dashboard. | **Pass** |
-| **TC-32** | Security | Access without Login | 1. Logout<br>2. Manually navigate to '/dashboard' | Redirected to Login Page immediately. | **Pass** |
-| **TC-33** | Course | Duplicate Enrollment | 1. Enroll in 'React 101'<br>2. Try to Click 'Enroll' again | Button disabled or message "Already Enrolled". | **Pass** |
-| **TC-34** | AI | Invalid File Type | 1. Generate Roadmap<br>2. Upload an executable (.exe) file | Error: "Invalid file format. Please upload PDF/Text". | **Pass** |
-| **TC-35** | Chat | Empty Message | 1. Open Chat<br>2. Leave input empty<br>3. Try to press Enter/Send | Message is not sent. | **Pass** |
-| **TC-36** | Auth | SQL Injection Attempt | 1. Login Email: `' OR 1=1 --`<br>2. Click Login | Login fails. System is secure against SQLi. | **Pass** |
+# WizLearn Platform - Detailed Test Cases
+
+**Total Test Cases:** 78  
+**Frontend Tests:** 51  
+**Backend Tests:** 27  
+**Status:** 100% Passed ✅
+
+| ID | Component / Module | Test Scenario | Type | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **FT-01** | AuthContext | Provides global authentication state (user, loading) | Unit | ✅ Pass |
+| **FT-02** | ChatContext | Manages global chat messages and active rooms | Unit | ✅ Pass |
+| **FT-03** | Login Page | Renders email and password input fields | Unit | ✅ Pass |
+| **FT-04** | Login Page | Validates and updates user input in real-time | Unit | ✅ Pass |
+| **FT-05** | Login Page | Authenticates user and redirects to Dashboard | Integration | ✅ Pass |
+| **FT-06** | Signup Page | Renders all registration fields | Unit | ✅ Pass |
+| **FT-07** | Signup Page | Successfully registers new user and handles API response | Integration | ✅ Pass |
+| **FT-08** | App Root | Smoke test: Ensures application renders without crashing | Unit | ✅ Pass |
+| **FT-09** | Dashboard | Displays personalized welcome message and layout | Unit | ✅ Pass |
+| **FT-10** | AdminDashboard | Renders admin-specific stats (Users, Courses) | Unit | ✅ Pass |
+| **FT-11** | Landing Page | Renders Hero, Features, and Footer sections correctly | Unit | ✅ Pass |
+| **FT-12** | Profile Page | Displays accurate user profile and account details | Unit | ✅ Pass |
+| **FT-13** | ProtectedRoute | Shows loading spinner while checking auth status | Unit | ✅ Pass |
+| **FT-14** | ProtectedRoute | Redirects unauthenticated users to Login page | Unit | ✅ Pass |
+| **FT-15** | ProtectedRoute | Permits authorized users to access private routes | Unit | ✅ Pass |
+| **FT-16** | AdminRoute | Shows loading state during role verification | Unit | ✅ Pass |
+| **FT-17** | AdminRoute | Redirects non-authenticated users to Login | Unit | ✅ Pass |
+| **FT-18** | AdminRoute | Redirects non-admin users to Student Dashboard | Unit | ✅ Pass |
+| **FT-19** | AdminRoute | Permits Admin users to access Management Panel | Unit | ✅ Pass |
+| **FT-20** | ChatPage | Renders real-time chat interface components | Unit | ✅ Pass |
+| **FT-21** | CoursePage | Shows loading skeleton while fetching course data | Unit | ✅ Pass |
+| **FT-22** | CoursePage | Displays full course content once data is loaded | Integration | ✅ Pass |
+| **FT-23** | CoursePage | Handles component switching (Quiz vs Resources) | Integration | ✅ Pass |
+| **FT-24** | CourseNavbar | Displays course title and context-aware buttons | Unit | ✅ Pass |
+| **FT-25** | CourseNavbar | Executes 'Back to Dashboard' navigation logic | Unit | ✅ Pass |
+| **FT-26** | CourseNavbar | Triggers Modal displays (Quiz/Material Upload) | Unit | ✅ Pass |
+| **FT-27** | CourseNavbar | Safely logs out user from the course context | Unit | ✅ Pass |
+| **FT-28** | AI Quiz | Prevents rendering if quiz data is missing | Unit | ✅ Pass |
+| **FT-29** | AI Quiz | Processes user answers and calculates final score | Integration | ✅ Pass |
+| **FT-30** | AI Quiz | Resets quiz state for multiple attempts | Integration | ✅ Pass |
+| **FT-31** | AI Roadmap | Handles empty state gracefully (No roadmap generated) | Unit | ✅ Pass |
+| **FT-32** | AI Roadmap | Renders complex nested JSON roadmap steps | Unit | ✅ Pass |
+| **FT-33** | CommunityNotes | Fetches and displays shared notes from peers | Integration | ✅ Pass |
+| **FT-34** | CommunityNotes | Submits new shared notes to the database | Integration | ✅ Pass |
+| **FT-35** | Resources | Handles absence of external resource data | Unit | ✅ Pass |
+| **FT-36** | Resources | Defaults to YouTube video search tab | Unit | ✅ Pass |
+| **FT-37** | Resources | Successfully toggles between Videos, Books, and Docs | Integration | ✅ Pass |
+| **FT-38** | MaterialCard | Displays material metadata (Name, Size, Type) | Unit | ✅ Pass |
+| **FT-39** | MaterialCard | Handles callback for Material deletion | Unit | ✅ Pass |
+| **FT-40** | MaterialCard | Renders appropriate preview icons for PDFs/Images | Integration | ✅ Pass |
+| **FT-41** | UploadModal | Respects 'isOpen' state for visibility | Unit | ✅ Pass |
+| **FT-42** | UploadModal | Displays material upload form with validation | Unit | ✅ Pass |
+| **FT-43** | UploadModal | Validates required fields before allowing submission | Unit | ✅ Pass |
+| **FT-44** | UploadModal | Processes multi-part file upload to backend | Integration | ✅ Pass |
+| **FT-45** | ID Generator | Generates unique User IDs (WL-USER-XXXXX) | Unit | ✅ Pass |
+| **FT-46** | ID Generator | Generates unique Course Codes (WL-COURSE-XXXXXX) | Unit | ✅ Pass |
+| **FT-47** | ID Generator | Returns Dark Navy for color index 0 | Unit | ✅ Pass |
+| **FT-48** | ID Generator | Returns Yellow for color index 1 | Unit | ✅ Pass |
+| **FT-49** | ID Generator | Cycles through the primary color palette | Unit | ✅ Pass |
+| **FT-50** | Storage Utils | Persists user data in Browsers LocalStorage | Unit | ✅ Pass |
+| **FT-51** | Storage Utils | Clears LocalStorage on user logout | Unit | ✅ Pass |
+| **BT-01** | AppController | Root endpoint returns connectivity success (Hello World) | Unit | ✅ Pass |
+| **BT-02** | AdminService | Initialization and Repository Injection | Unit | ✅ Pass |
+| **BT-03** | AuthService | Initialization and Repository Injection | Unit | ✅ Pass |
+| **BT-04** | AuthService | Compares hashed passwords during login | Unit | ✅ Pass |
+| **BT-05** | AuthService | Signs and returns valid JWT tokens | Unit | ✅ Pass |
+| **BT-06** | AuthService | Validates account existence before login | Unit | ✅ Pass |
+| **BT-07** | ChatService | Initialization and interaction history tracking | Unit | ✅ Pass |
+| **BT-08** | CoursesService | Initialization and Course management | Unit | ✅ Pass |
+| **BT-09** | CoursesService | Fetches all available courses for discovery | Unit | ✅ Pass |
+| **BT-10** | EnrollService | Initialization and Progress calculation login | Unit | ✅ Pass |
+| **BT-11** | FriendsService | Initialization and Repository Injection | Unit | ✅ Pass |
+| **BT-12** | FriendsService | Processes mutual friendship status | Unit | ✅ Pass |
+| **BT-13** | GeminiService | Initialization and AI API Configuration | Unit | ✅ Pass |
+| **BT-14** | GeminiService | Generates structured educational Roadmaps | Unit | ✅ Pass |
+| **BT-15** | GeminiService | Generates AI-powered knowledge Quizzes | Unit | ✅ Pass |
+| **BT-16** | GeminiService | Handles real-time academic chat interactions | Unit | ✅ Pass |
+| **BT-17** | MaterialsService| Initialization and File Metadata management | Unit | ✅ Pass |
+| **BT-18** | MaterialsService| Deletes materials and associated file records | Unit | ✅ Pass |
+| **BT-19** | NotesService | Initialization and Shared Note management | Unit | ✅ Pass |
+| **BT-20** | ResourceService | Initialization and External Search API config | Unit | ✅ Pass |
+| **BT-21** | ResourceService | Integrates with YoutTube Data API | Unit | ✅ Pass |
+| **BT-22** | ResourceService | Integrates with Google Books API | Unit | ✅ Pass |
+| **BT-23** | SeedService | Database bootstrapping and mock data insertion | Unit | ✅ Pass |
+| **BT-24** | UsersService | Initialization and Repository Injection | Unit | ✅ Pass |
+| **BT-25** | UsersService | Creates new persistent user records | Unit | ✅ Pass |
+| **BT-26** | UsersService | Retrieves user by email for authentication | Unit | ✅ Pass |
+| **BT-27** | UsersService | Handles 'Not Found' edge cases for user queries | Unit | ✅ Pass |
