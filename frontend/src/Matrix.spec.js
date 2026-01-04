@@ -1,10 +1,11 @@
+/** @env node */
 import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 
 describe('Master Testing Matrix - Frontend (Black Box & UI/UX)', () => {
-    // In vitest/node context, we can read the file
-    const filePath = path.resolve(__dirname, '../../TEST_CASES.md');
+    // Read the file from the root directory
+    const filePath = path.resolve(process.cwd(), '../TEST_CASES.md');
     const content = fs.readFileSync(filePath, 'utf8');
 
     const lines = content.split('\n');
@@ -23,20 +24,17 @@ describe('Master Testing Matrix - Frontend (Black Box & UI/UX)', () => {
         };
     });
 
-    // These are the keywords used for Backend filtering
     const backendKeywords = [
         'White Box', 'Logic', 'Security', 'API', 'Database',
         'Infrastructure', 'Compliance', 'Ops'
     ];
 
-    // Filter for Frontend-related (everything not covered by backend keywords)
     const frontendCases = cases.filter(c =>
         !backendKeywords.some(key => c.methodology.includes(key)) &&
         !backendKeywords.some(key => c.type.includes(key)) &&
         !c.domain.includes('Backend')
     );
 
-    // Group cases by domain to reduce block overhead
     const groupedCases = frontendCases.reduce((acc, c) => {
         if (!acc[c.domain]) acc[c.domain] = [];
         acc[c.domain].push(c);
@@ -46,12 +44,11 @@ describe('Master Testing Matrix - Frontend (Black Box & UI/UX)', () => {
     Object.entries(groupedCases).forEach(([domain, domainCases]) => {
         it(`Verifying ${domainCases.length} cases for Domain: ${domain}`, () => {
             domainCases.forEach(c => {
-                try {
-                    expect(c.status).toContain('✅ Pass');
-                } catch (err) {
+                if (!c.status.includes('✅ Pass')) {
                     throw new Error(`[ID:${c.id}] ${c.domain} > ${c.component}: ${c.description} FAILED. Status was ${c.status}`);
                 }
             });
+            expect(true).toBe(true);
         });
     });
 });

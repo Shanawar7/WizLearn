@@ -5,7 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [
     react({
-      babel: {
+      // Disable compiler in tests to speed up CI
+      babel: process.env.VITEST ? undefined : {
         plugins: [['babel-plugin-react-compiler']],
       },
     }),
@@ -15,10 +16,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/setupTests.js',
     css: false,
-    pool: 'forks',
+    pool: 'threads',
     maxWorkers: 1,
     minWorkers: 1,
-    fileParallelism: false,
-    testTimeout: 90000,
+    testTimeout: 60000,
   },
 })
