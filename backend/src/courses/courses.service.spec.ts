@@ -61,6 +61,6 @@ describe('CoursesService', () => {
         const user = { id: 1 } as any; // Mock user
         const course = await service.findOne('1', user);
         expect(course).toBeDefined();
-        expect(course.id).toBe(1);
+        expect(course!.id).toBe(1);
     });
 });

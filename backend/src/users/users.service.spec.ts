@@ -43,7 +43,7 @@ describe('UsersService', () => {
   it('should find a user by email', async () => {
     const user = await service.findOneByEmail('test@example.com');
     expect(user).toBeDefined();
-    expect(user.email).toBe('test@example.com');
+    expect(user!.email).toBe('test@example.com');
   });
 
   it('should return null if user not found', async () => {
