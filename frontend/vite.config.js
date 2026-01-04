@@ -14,8 +14,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/setupTests.js',
-    css: true,
-    minThreads: 1,
-    maxThreads: 2,
+    css: false,
+    maxWorkers: 2,
+    minWorkers: 1,
+    fileParallelism: false,
+    testTimeout: 90000,
   },
 })
